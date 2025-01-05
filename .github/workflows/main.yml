@@ -4,6 +4,8 @@ on:
   schedule:
     # Menjalankan setiap hari pada pukul 17:00 UTC (00.00 WIB)
     - cron: '0 17 * * *'
+    # Menjalankan pada pukul 22:00 UTC (05:00 WIB)
+    - cron: '0 22 * * *'
   push:
     branches:
       - main  # Jalankan ketika ada push ke branch main
