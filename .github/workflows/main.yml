@@ -1,0 +1,43 @@
+name: Get Strategi Data Workflow
+
+on:
+  schedule:
+    # Menjalankan setiap hari pada pukul 17:00 UTC (00.00 WIB)
+    - cron: '0 17 * * *'
+  push:
+    branches:
+      - main  # Jalankan ketika ada push ke branch main
+
+jobs:
+  generate_pickle:
+    runs-on: ubuntu-latest  # Menjalankan di mesin Ubuntu
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2  # Checkout kode dari repository
+
+      - name: Set up Python 3.11.5
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.11.5'  # Menentukan versi Python yang digunakan
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt  # Install dependencies dari file requirements.txt (jika ada)
+
+      - name: Run the Python script to get Strategi Data
+        run: python get_data_strategi.py  # Jalankan file Python yang menghasilkan pickle
+
+      - name: Create output folder and move pickle file
+        run: |
+          mkdir -p output  # Membuat folder output jika belum ada
+          mv *2023.pkl output/  # Pindahkan file pickle 2023 ke folder output
+          mv *2024.pkl output/  # Pindahkan file pickle 2024 ke folder output
+
+      - name: Commit and push pickle to repository
+        run: |
+          git config --global user.name "izzuddinfa"
+          git config --global user.email "izzuddinfathin@gmail.com"
+          git add output/*.pkl  # Menambahkan semua file pickle di folder output
+          git commit -m "Add pickle files for 2023 and 2024"  # Commit perubahan
+          git push  # Push perubahan ke repository
