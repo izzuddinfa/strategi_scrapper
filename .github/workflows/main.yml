@@ -5,6 +5,7 @@ on:
     # Menjalankan setiap hari pada pukul 17:00 UTC (00.00 WIB)
     - cron: '0 0 * * *'
     - cron: '15 0 * * *'
+    - cron: '0 5 * * *'
     - cron: '0 17 * * *'
     # Menjalankan pada pukul 22:00 UTC (05:00 WIB)
     - cron: '0 22 * * *'
