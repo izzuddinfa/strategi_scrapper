@@ -34,10 +34,12 @@ jobs:
           mv *2023.pkl output/  # Pindahkan file pickle 2023 ke folder output
           mv *2024.pkl output/  # Pindahkan file pickle 2024 ke folder output
 
-      - name: Commit and push pickle to repository
+      - name: Commit and push pickle files to repository
         run: |
           git config --global user.name "izzuddinfa"
           git config --global user.email "izzuddinfathin@gmail.com"
+          git remote set-url origin https://github.com/${{ github.repository }}.git
           git add output/*.pkl  # Menambahkan semua file pickle di folder output
           git commit -m "Add pickle files for 2023 and 2024"  # Commit perubahan
-          git push  # Push perubahan ke repository
+          git push https://izzuddinfa:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git
+
