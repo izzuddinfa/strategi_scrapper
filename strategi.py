@@ -18,10 +18,10 @@ class GetData:
             self._process_response()
 
         def _make_request(self):
-            cookies = {
-                '_ga_6CD720YJJK': 'GS1.1.1701955836.22.0.1701956371.0.0.0',
-                '_ga_CF6YBE5JSB': 'GS1.1.1721549648.1.0.1721549648.60.0.1661575913',
-            }
+            # cookies = {
+            #     '_ga_6CD720YJJK': 'GS1.1.1701955836.22.0.1701956371.0.0.0',
+            #     '_ga_CF6YBE5JSB': 'GS1.1.1721549648.1.0.1721549648.60.0.1661575913',
+            # }
             headers = {
                 'accept': 'application/json, text/plain, */*',
                 'content-type': 'application/json',
@@ -35,7 +35,7 @@ class GetData:
             }
             response = requests.post(
                 'https://strategi.kemenhub.go.id/api/hubnet/data-pantau-produksi-seasonal',
-                cookies=cookies,
+                # cookies=cookies,
                 headers=headers,
                 json=json_data,
             )
