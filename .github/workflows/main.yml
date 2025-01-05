@@ -7,9 +7,10 @@ on:
   push:
     branches:
       - main  # Jalankan ketika ada push ke branch main
-
+permissions:
+  contents: write
 jobs:
-  generate_pickle:
+  get_data_strategi:
     runs-on: ubuntu-latest  # Menjalankan di mesin Ubuntu
 
     steps:
