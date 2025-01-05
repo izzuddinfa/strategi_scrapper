@@ -39,6 +39,11 @@ class GetData:
                 headers=headers,
                 json=json_data,
             )
+            # Cek status code respons
+            if response.status_code != 200:
+                print(f"Error: Received status code {response.status_code}")
+                print(f"Response content: {response.text}")  # Cetak konten respons
+                return None
             return response
 
         def _process_response(self):
